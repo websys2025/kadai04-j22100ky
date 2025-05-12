@@ -46,6 +46,10 @@
                         console.log("商品番号: "+this.id+", 商品名: "+this.name+"を購入します。");
                         // 課題4-2. ここにコードを書く
                         // 購入による商品の在庫削減処理
+                        for (let i=0; i<items.length; i++) {
+                            item_list[i] = new Item(items[i].name, items[i].price, items[i].stock);
+                            itemArea.innerHTML += "<tr><td>"+item_list[i].name+"</td><td>"+item_list[i].price+"</td><td id='stock"+item_list[i].id+"'>"+item_list[i].stock+"</td><td><button id='button"+item_list[i].id+"'>購入</button></td></tr>";
+                        }
                         
                         // 課題4-3. ここにコードを書く
                         // 在庫用のエレメントを抽出し、HTML内の個数を更新
