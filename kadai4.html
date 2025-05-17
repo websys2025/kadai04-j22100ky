@@ -46,23 +46,24 @@
                 
                 // 商品購入の関数
                 buyItem() {          
-                    if (this.stock >= 1) { 
+                    if (this.stock >= 1 && myprice >= this.price) { // 在庫がある場合
                         console.log("商品番号: "+this.id+", 金額:"+this.price+", 商品名: "+this.name+"を購入します。");
                         // 課題4-2. ここにコードを書く
                         myprice -= this.price; // 購入金額を引く
                         this.stock--; // 在庫数を1減らす
+                        console.log(this.name+"を購入しました。残金は"+myprice+"円です。");
                         console.log("残りは"+this.stock+"個です。");
                         // 購入による商品の在庫削減処理
-                        
                         // 課題4-3. ここにコードを書く
                         // 商品表の在庫数を更新
                         // 在庫用のエレメントを抽出し、HTML内の個数を更新
                         document.getElementById("stock"+this.id).innerHTML = this.stock;
                     }
-                    else console.log(this.name+"は商品の在庫がないため購入できません。");
-
-                    if (myprice <= this.price) {
-                        console.log("お金が足りません。");
+                    else if (this.stock >= 1 && myprice < this.price) { // 在庫があるが、所持金が足りない場合
+                        console.log(this.name+"は所持金が足りないため購入できません。");
+                    }
+                    else if (this.stock < 1) { // 在庫がない場合
+                        console.log(this.name+"は商品の在庫がないため購入できません。");
                     }
                 }
             } 
