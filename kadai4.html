@@ -58,6 +58,8 @@
                         // 商品表の在庫数を更新
                         // 在庫用のエレメントを抽出し、HTML内の個数を更新
                         document.getElementById("stock"+this.id).innerHTML = this.stock;
+                        document.getElementById("money").innerHTML = myprice; // 所持金の表示を更新
+
                     }
                     else if (this.stock >= 1 && myprice < this.price) { // 在庫があるが、所持金が足りない場合
                         console.log(this.name+"は所持金が足りないため購入できません。");
@@ -98,9 +100,10 @@
             Item.showItemList(item_list);
 
         </script>
-        <p>あなたの所持金は<span id="money"></span>円です。</p>
+        <p>あなたの所持金は<span id="money"></span>円です。</p>        
         <script>
             document.getElementById("money").innerHTML = myprice;
+
         </script>
 
     </body>
